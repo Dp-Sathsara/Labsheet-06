@@ -107,6 +107,97 @@ public class LinkedList {
             }
         }
     }
+    public void bubbleSortByGrade() {
+        if (size > 1) {
+            boolean wasChanged;
+            do {
+                Node current = head;
+                Node previous = null;
+                Node next = head.next;
+                wasChanged = false;
+
+                while (next != null) {
+                    if (current.grade.compareTo(next.grade) > 0) {
+                        wasChanged = true;
+
+                        if (previous != null) {
+                            Node sig = next.next;
+                            previous.next = next;
+                            next.next = current;
+                            current.next = sig;
+                        } else {
+                            Node sig = next.next;
+                            head = next;
+                            next.next = current;
+                            current.next = sig;
+                        }
+
+                        previous = next;
+                        next = current.next;
+                    } else {
+                        previous = current;
+                        current = next;
+                        next = next.next;
+                    }
+                }
+            } while (wasChanged);
+        }
+    }
+    public void selectionSortByGrade() {
+        for (Node i = head; i != null && i.next != null; i = i.next) {
+            Node min = i;
+            for (Node j = i.next; j != null; j = j.next) {
+                if (j.grade.compareTo(min.grade) < 0) {
+                    min = j;
+                }
+            }
+            if (min != i) {
+                String tempGrade = i.grade;
+                String tempStudentNumber = i.studentNumber;
+                String tempName = i.name;
+                String tempGender = i.gender;
+
+                i.grade = min.grade;
+                i.studentNumber = min.studentNumber;
+                i.name = min.name;
+                i.gender = min.gender;
+
+                min.grade = tempGrade;
+                min.studentNumber = tempStudentNumber;
+                min.name = tempName;
+                min.gender = tempGender;
+            }
+        }
+    }
+    public void insertionSortByGrade() {
+        if (head == null || head.next == null) {
+            return;
+        }
+
+        Node sorted = null;
+        Node current = head;
+
+        while (current != null) {
+            Node next = current.next;
+
+            if (sorted == null || sorted.grade.compareTo(current.grade) >= 0) {
+                current.next = sorted;
+                sorted = current;
+            } else {
+                Node temp = sorted;
+                while (temp.next != null && temp.next.grade.compareTo(current.grade) < 0) {
+                    temp = temp.next;
+                }
+                current.next = temp.next;
+                temp.next = current;
+            }
+
+            current = next;
+        }
+
+        head = sorted;
+    }
+    
     public static void main(String[] args) {
         LinkedList sList=new LinkedList();
 
@@ -126,9 +217,30 @@ public class LinkedList {
         System.out.println("");
         System.out.println("");
 
-        System.out.println("(01) ii)---A");
+        System.out.println("(01) ii)---Answer");
         sList.sortByGrade();
         sList.traverseList();
+
+
+        System.out.println("(01) iii)---Bubble Sort");
+        sList.bubbleSortByGrade();
+        sList.traverseList();
+        System.out.println("");
+        System.out.println("");
+
+        System.out.println("(01) iii)---Selection Sort");
+        sList.selectionSortByGrade();
+        sList.traverseList();
+        System.out.println("");
+        System.out.println("");
+
+        System.out.println("(01) iii)---Insertion Sort");
+        sList.insertionSortByGrade();
+        sList.traverseList();
+
+
+
+
     }
 }
 
