@@ -213,28 +213,33 @@ public class LinkedList {
         sList.insertLast("PS/2014/127", "Pawan", "M", "A");
 
         System.out.println("(01) i)---Answer");
+        System.out.println("");
         sList.traverseList();
         System.out.println("");
         System.out.println("");
 
         System.out.println("(01) ii)---Answer");
+        System.out.println("");
         sList.sortByGrade();
         sList.traverseList();
 
 
         System.out.println("(01) iii)---Bubble Sort");
+        System.out.println("");
         sList.bubbleSortByGrade();
         sList.traverseList();
         System.out.println("");
         System.out.println("");
 
         System.out.println("(01) iii)---Selection Sort");
+        System.out.println("");
         sList.selectionSortByGrade();
         sList.traverseList();
         System.out.println("");
         System.out.println("");
 
         System.out.println("(01) iii)---Insertion Sort");
+        System.out.println("");
         sList.insertionSortByGrade();
         sList.traverseList();
 
