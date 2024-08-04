@@ -123,6 +123,12 @@ public class LinkedList {
 
         System.out.println("(01) i)---Answer");
         sList.traverseList();
+        System.out.println("");
+        System.out.println("");
+
+        System.out.println("(01) ii)---A");
+        sList.sortByGrade();
+        sList.traverseList();
     }
 }
 
